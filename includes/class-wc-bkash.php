@@ -216,7 +216,7 @@ class WC_bKash
             'ref' => $response->reference,
             'amount' => $response->amount,
         ), array(
-            '%d',
+            '%s',
             '%s',
             '%s',
             '%s',
