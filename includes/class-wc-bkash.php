@@ -5,7 +5,7 @@
  */
 class WC_bKash {
 
-    const base_url = 'http://www.bkashcluster.com:9080/dreamwave/merchant/trxcheck/sendmsg';
+    const base_url = 'https://www.bkashcluster.com:9081/dreamwave/merchant/trxcheck/sendmsg';
     private $table = 'wc_bkash';
 
     function __construct() {
