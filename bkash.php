@@ -69,7 +69,7 @@ class WeDevs_bKash {
 
         $query = "CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}wc_bkash` (
             `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-            `trxId` int(11) DEFAULT NULL,
+            `trxId` varchar(15) DEFAULT NULL,
             `sender` varchar(15) DEFAULT NULL,
             `ref` varchar(100) DEFAULT NULL,
             `amount` varchar(10) DEFAULT NULL,
@@ -78,6 +78,12 @@ class WeDevs_bKash {
           ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 
         $wpdb->query( $query );
+
+        $query = "ALTER TABLE `{$wpdb->prefix}_wc_bkash`
+			ADD UNIQUE KEY `trxId_2` (`trxId`),
+			ADD KEY `trxId` (`trxId`);";
+
+  		$wpdb->query( $query );
 
         $this->plugin_upgrades();
 
