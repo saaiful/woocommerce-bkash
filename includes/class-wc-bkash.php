@@ -135,6 +135,10 @@ class WC_bKash
                 wp_send_json_error(__('Duplicate request. Consecutive hit for the same request within 5 minutes.', 'wc-bkash'));
                 return;
 
+            case '4002':
+                wp_send_json_error(__('This transaction ID is not valid for this site.', 'wc-bkash'));
+                return;
+
             case '9999':
                 wp_send_json_error(__('System error, could not process request. Please contact site admin.', 'wc-bkash'));
                 return;
@@ -191,11 +195,11 @@ class WC_bKash
         $response = file_get_contents($url);
 
         if (false !== $response) {
-            $response = simplexml_load_string($response);
-            $response = json_decode(json_encode($response));
-            return $response->transaction;
+                $response = simplexml_load_string($response);
+                $response = json_decode(json_encode($response));
+                return $response->transaction;
+            }
         }
-
         return false;
     }
 
