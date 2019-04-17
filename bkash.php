@@ -68,14 +68,12 @@ class WeDevs_bKash {
         global $wpdb;
 
         $query = "CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}wc_bkash` (
-            `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-            `trxId` varchar(15) DEFAULT NULL,
-            `sender` varchar(15) DEFAULT NULL,
-            `ref` varchar(100) DEFAULT NULL,
-            `amount` varchar(10) DEFAULT NULL,
-            PRIMARY KEY (`id`),
-            KEY `trxId` (`trxId`)
-          ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+              `id` int(11) UNSIGNED NOT NULL,
+              `trxId` varchar(20) DEFAULT NULL,
+              `sender` varchar(15) DEFAULT NULL,
+              `ref` varchar(100) DEFAULT NULL,
+              `amount` varchar(10) DEFAULT NULL
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8";
 
         $wpdb->query( $query );
 
@@ -106,8 +104,8 @@ class WeDevs_bKash {
 
         switch ( $version ) {
             case '0.1':
-                $sql = "ALTER TABLE `{$wpdb->prefix}wc_bkash` CHANGE `trxId` `trxId` BIGINT(20) NULL DEFAULT NULL;";
-                $wpdb->query( $sql );
+                // $sql = "ALTER TABLE `{$wpdb->prefix}wc_bkash` CHANGE `trxId` `trxId` BIGINT(20) NULL DEFAULT NULL;";
+                // $wpdb->query( $sql );
                 break;
         }
     }
