@@ -195,10 +195,9 @@ class WC_bKash
         $response = file_get_contents($url);
 
         if (false !== $response) {
-                $response = simplexml_load_string($response);
-                $response = json_decode(json_encode($response));
-                return $response->transaction;
-            }
+            $response = simplexml_load_string($response);
+            $response = json_decode(json_encode($response));
+            return $response->transaction;
         }
         return false;
     }
